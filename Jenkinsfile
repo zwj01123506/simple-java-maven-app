@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'sed -i '$d' /usr/share/maven/config/setting.xml
+                sh 'sed -i '$d' /usr/share/maven/config/setting.xml'
                 sh 'echo "<proxies>" >> /usr/share/maven/config/setting.xml'
                 sh 'echo "<proxy>" >> /usr/share/maven/config/setting.xml'
                 sh 'echo "<id>my-proxy</id>" >> /usr/share/maven/config/setting.xml'
