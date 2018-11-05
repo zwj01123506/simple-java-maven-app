@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
+                input "Does the staging environment look ok?"
                 sh '''sed -i \'$d\' /usr/share/maven/config/setting.xml
                     echo "<proxies>" >> /usr/share/maven/config/setting.xml
                     echo "<proxy>" >> /usr/share/maven/config/setting.xml
@@ -20,8 +21,6 @@ pipeline {
                     echo "</proxies>" >> /usr/share/maven/config/setting.xml
                     echo "</settings>" >> /usr/share/maven/config/setting.xml'''
                 input "Does the staging environment look ok?"
-                sh 'export https_proxy=http://web-proxy.sgp.hp.com:8080'
-                sh 'export http_proxy=http://web-proxy.sgp.hp.com:8080'
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
