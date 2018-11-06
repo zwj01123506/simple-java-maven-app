@@ -9,7 +9,7 @@ pipeline {
         stage('Build') { 
             steps {
                  sh '''
-                    sed -i "/</settings>/d" /usr/share/maven/conf/settings.xml
+                    sed -i \'$d\' /usr/share/maven/conf/settings.xml
                     sed -i \'/</proxies>/d\' /usr/share/maven/conf/settings.xml
                     sed -i \'/<proxies>/d\' /usr/share/maven/conf/settings.xml
                     echo "<proxies>" >> /usr/share/maven/conf/settings.xml
