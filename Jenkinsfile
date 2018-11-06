@@ -9,6 +9,8 @@ pipeline {
         stage('Build') { 
             steps {
                  sh '''
+                    sed -i \'257d\' /usr/share/maven/conf/settings.xml
+                    sed -i \'90,105d' /usr/share/maven/conf/settings.xml
                     echo "<proxies>" >> /usr/share/maven/conf/settings.xml
                     echo "<proxy>" >> /usr/share/maven/conf/settings.xml
                     echo "<id>my-proxy</id>" >> /usr/share/maven/conf/settings.xml
