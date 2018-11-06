@@ -21,8 +21,7 @@ pipeline {
                     echo "</proxy>" >> /usr/share/maven/conf/settings.xml
                     echo "</proxies>" >> /usr/share/maven/conf/settings.xml
                     echo "</settings>" >> /usr/share/maven/conf/settings.xml'''
-                input "Does the staging environment look ok?"
-                sh 'mvn -B -DskipTests clean package' 
+                 sh 'mvn -B -DskipTests clean package' 
             }
         }
         stage('Test') {
